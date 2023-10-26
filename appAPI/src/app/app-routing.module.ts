@@ -3,12 +3,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'filmes',
     pathMatch: 'full'
   },
   {
@@ -16,12 +12,8 @@ const routes: Routes = [
     loadChildren: () => import('./view/filmes/filmes.module').then( m => m.FilmesPageModule)
   },
   {
-    path: 'filmes-detalhes',
+    path: 'filmes-detalhes/:id',
     loadChildren: () => import('./view/filmes-detalhes/filmes-detalhes.module').then( m => m.FilmesDetalhesPageModule)
-  },
-  {
-    path: 'omdbapi',
-    loadChildren: () => import('./model/services/omdbapi/omdbapi.module').then( m => m.OmdbapiPageModule)
   },
 ];
 
