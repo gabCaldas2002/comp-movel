@@ -28,7 +28,7 @@ export class HomePage {
     this.valor1 = +this.visor;
     this.zerar();
   }
-
+ 
   calcular(){
     this.valor2 = +this.visor;
     switch(this.operacao){
@@ -48,6 +48,18 @@ export class HomePage {
         this.visor = "" + (this.valor1 / this.valor2);
         break;
       }
+    }
+  }
+
+  porcentagem(){
+    this.valor1 = +this.visor;
+    this.visor = "" + (this.valor1/100)
+    this.valor1 = +this.visor;
+  }
+
+  trocasinal(){
+    if(this.visor[0] !== '0'){
+      this.visor = "" + (parseFloat(this.visor) * -1);
     }
   }
 
