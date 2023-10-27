@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { OmdbapiService } from 'src/app/model/services/omdbapi.service';
+import { Observable } from 'rxjs';
+import { OmdbapiService, SearchType } from 'src/app/model/services/omdbapi.service';
 
 @Component({
   selector: 'app-filmes-detalhes',
@@ -10,11 +11,13 @@ import { OmdbapiService } from 'src/app/model/services/omdbapi.service';
 export class FilmesDetalhesPage implements OnInit {
   info : any;
 
-  constructor(private actRoute: ActivatedRoute, private omdbapi : OmdbapiService) { }
+  constructor(private activatedRoute: ActivatedRoute, private _omdbapi : OmdbapiService) { }
 
   ngOnInit() {
-    let id = this.actRoute.snapshot.paramMap.get('id');
-    this.omdbapi.getById(id)
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
+    this._omdbapi.getById(id).subscribe(result => {
+      this.info = result;
+    })
   }
 
   openUrl(){
