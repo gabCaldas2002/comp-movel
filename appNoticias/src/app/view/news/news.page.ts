@@ -8,6 +8,7 @@ import { NewsFilter, NewsapiService } from 'src/app/model/service/newsapi.servic
   styleUrls: ['./news.page.scss'],
 })
 export class NewsPage implements OnInit {
+  info : any;
   result! : Observable<any>;
   filterTerms! : string;
   type : NewsFilter = NewsFilter.all;
@@ -24,5 +25,9 @@ export class NewsPage implements OnInit {
   filter(){
     this.result = this.newsApi.getByCategory(this.type);
   }
- 
+  
+  
+  openUrl(){
+    window.open(this.info.Website, '_blank');
+  }
 }
