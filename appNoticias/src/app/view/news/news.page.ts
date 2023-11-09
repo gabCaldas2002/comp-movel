@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { NewsFilter, NewsapiService } from 'src/app/model/service/newsapi.service';
 
 @Component({
   selector: 'app-news',
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news.page.scss'],
 })
 export class NewsPage implements OnInit {
+  result! : Observable<any>;
+  filterTerms! : string;
+  type : NewsFilter = NewsFilter.all;
 
-  constructor() { }
+  constructor(private newsApi : NewsapiService) { }
 
   ngOnInit() {
+  }
+
+  load(){
+    this.result = this.newsApi.getAll();
+  }
+
+  filter(){
+    this.result = this.newsApi.getByCategory(this.type);
   }
  
 }

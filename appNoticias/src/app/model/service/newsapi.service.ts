@@ -18,17 +18,18 @@ export enum NewsFilter{
 })
 
 export class NewsapiService {
-  url = 'https://newsapi.org/v2/top-headlines?country=br'
+  url = 'https://newsapi.org/v2/top-headlines';
+  country = 'br';
   apikey = '55dd9f5d6953447b94c6a0971870becc'
 
   constructor(private http: HttpClient) {}
 
   getAll() : Observable<any>{
-    return this.http.get(`${this.url}&apikey=${this.apikey}`);
+    return this.http.get(`${this.url}?country=${this.country}&apikey=${this.apikey}`);
   }
 
   getByCategory(type : NewsFilter) : Observable<any>{
-    return this.http.get(`${this.url}&category=${type}&apikey=${this.apikey}`);
+    return this.http.get(`${this.url}?country=${this.country}&category=${type}&apikey=${this.apikey}`);
   }
 
 }

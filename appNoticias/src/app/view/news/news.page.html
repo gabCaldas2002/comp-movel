@@ -1,13 +1,39 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>news</ion-title>
+    <ion-title>Buscar Notícias</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">news</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-item>
+    <ion-label>Selecione a categoria</ion-label>
+    <ion-select [(ngModel)]="type" (ionChange)="filter()">
+      <ion-select-option value="business">Negócios</ion-select-option>
+      <ion-select-option value="entertainment">Entretenimento</ion-select-option>
+      <ion-select-option value="general">Geral</ion-select-option>
+      <ion-select-option value="health">Saúde</ion-select-option>
+      <ion-select-option value="science">Ciência</ion-select-option>
+      <ion-select-option value="sports">Esportes</ion-select-option>
+      <ion-select-option value="technology">Tecnologia</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-list>
+    <ion-card *ngIf="info">
+      <ion-card-header>
+        <ion-card-title>{{info.title}}</ion-card-title>
+        <ion-card-subtitle>{{info.name}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content text-center>
+        <img [src]="info.urlToImage"/>
+        <ion-item lines="none">
+          <ion-label text-wrap>Descrição</ion-label>
+          <ion-text>{{ info.description.slice(0, 200) + '...' }}</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label text-wrap>{{info.Published}}</ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
 </ion-content>
