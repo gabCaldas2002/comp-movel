@@ -22,9 +22,19 @@ export class FirebaseService {
     .add({nome: contato.nome, telefone: contato.telefone});
   }
 
+  createWithImage(contato: Contato){
+    return this.firestore.collection(this.PATH)
+    .add({nome: contato.nome, telefone: contato.telefone, downloadURL: contato.downloadURL});
+  }
+
   update(contato: Contato, id: string){
     return this.firestore.collection(this.PATH).doc(id)
     .update({nome: contato.nome, telefone: contato.telefone});
+  }
+
+  updateWithImage(contato: Contato, id: string){
+    return this.firestore.collection(this.PATH).doc(id)
+    .update({nome: contato.nome, telefone: contato.telefone, downloadURL: contato.downloadURL});
   }
 
   delete(contato: Contato){
@@ -42,6 +52,17 @@ export class FirebaseService {
     const path = `images/${contato.nome}_${file.name}`;
     const fileRef = this.storage.ref(path);
     let task = this.storage.upload(path,file);
-    task.snapshotChanges().pipe().subscribe();
+    task.snapshotChanges().pipe(
+      finalize(()=>{
+        let uploadFileURL = fileRef.getDownloadURL();
+        uploadFileURL.subscribe(resp=>{
+          if(!contato.id){
+            this.createWithImage(contato)
+          }else{
+            this.updateWithImage(contato, contato.id);
+          }
+        })
+      })
+    ).subscribe();
   }
 }
