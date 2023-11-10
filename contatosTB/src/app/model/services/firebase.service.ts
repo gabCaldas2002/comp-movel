@@ -56,6 +56,7 @@ export class FirebaseService {
       finalize(()=>{
         let uploadFileURL = fileRef.getDownloadURL();
         uploadFileURL.subscribe(resp=>{
+          contato.downloadURL = resp;
           if(!contato.id){
             this.createWithImage(contato)
           }else{
