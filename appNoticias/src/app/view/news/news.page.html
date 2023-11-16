@@ -26,14 +26,17 @@
         <ion-card-subtitle>{{ singleInfo.source.name }}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content text-center>
-        <img [src]="getImageUrl(singleInfo)"/>
+        <div class="image-container">
+          <img [src]="getImageUrl(singleInfo)" alt="News Image"/>
+        </div>
         <ion-item lines="none">
-          <ion-label text-wrap>Descrição</ion-label>
+          <ion-label text-wrap>Descrição: </ion-label>
           <ion-text>{{ getDescription(singleInfo).slice(0, 200) + '...' }}</ion-text>
         </ion-item>
         <ion-item>
-          <ion-label text-wrap>{{ singleInfo.publishedAt }}</ion-label>
+          <ion-label text-wrap>Publicado em: {{ singleInfo.publishedAt }}</ion-label>
         </ion-item>
       </ion-card-content>
     </ion-card>
   </ion-list>
+  

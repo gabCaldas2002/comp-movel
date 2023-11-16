@@ -25,8 +25,8 @@ export class NewsPage implements OnInit {
   }
 
   filter() {
-    this.result = this.newsApi.getByCategory(this.type);
-    this.loadNews();
+    this.newsApi.getByCategory(this.type)
+      .subscribe(data => this.info = data['articles']);
   }
 
   openUrl(info: any) {
@@ -38,6 +38,6 @@ export class NewsPage implements OnInit {
     }
 
   getDescription(info: any): string {
-    return info.description || 'Descrição não disponível'; // Use um texto padrão se a descrição estiver ausente
+    return info.description || 'Descrição não disponível';
   }
 }
