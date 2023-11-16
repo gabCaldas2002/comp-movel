@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
 import { NewsFilter, NewsapiService } from 'src/app/model/service/newsapi.service';
 
 @Component({
@@ -8,25 +8,27 @@ import { NewsFilter, NewsapiService } from 'src/app/model/service/newsapi.servic
   styleUrls: ['./news.page.scss'],
 })
 export class NewsPage implements OnInit {
-  info: any = {};
-  result! : Observable<any>;
-  filterTerms! : string;
-  type : NewsFilter = NewsFilter.all;
+  info: any[] = [];
+  result!: Observable<any>;
 
-  constructor(private newsApi : NewsapiService) { }
+  type: NewsFilter = NewsFilter.all;
+
+  constructor(private newsApi: NewsapiService) {}
 
   ngOnInit() {
-    
-    this.result = this.newsApi.getAll().pipe(map(results =>  results['']));
-    this.result.subscribe(data => this.info = data);
+    this.loadNews();
   }
 
+  loadNews() {
+    this.result = this.newsApi.getAll();
+    this.result.subscribe(data => this.info = data['articles']);
+  }
 
-  filter(){
+  filter() {
     this.result = this.newsApi.getByCategory(this.type);
+    this.loadNews();
   }
-  
-  
+
   openUrl(info: any) {
     window.open(info.url, '_blank');
   }

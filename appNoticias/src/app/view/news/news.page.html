@@ -20,19 +20,19 @@
   </ion-item>
 
   <ion-list>
-    <ion-card *ngIf="info"  (click)='openUrl(info)'>
+    <ion-card *ngFor="let singleInfo of info" (click)="openUrl(singleInfo)">
       <ion-card-header>
-        <ion-card-title>{{info.title}}</ion-card-title>
-        <ion-card-subtitle>{{info.name}}</ion-card-subtitle>
+        <ion-card-title>{{ singleInfo.title }}</ion-card-title>
+        <ion-card-subtitle>{{ singleInfo.source.name }}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content text-center>
-        <img [src]="info.urlToImage"/>
+        <img [src]="singleInfo.urlToImage"/>
         <ion-item lines="none">
           <ion-label text-wrap>Descrição</ion-label>
-          <ion-text>{{ info.description?.slice(0, 200) + '...' }}</ion-text>
+          <ion-text>{{ singleInfo.description?.slice(0, 200) + '...' }}</ion-text>
         </ion-item>
         <ion-item>
-          <ion-label text-wrap>{{info.publishedAt}}</ion-label>
+          <ion-label text-wrap>{{ singleInfo.publishedAt }}</ion-label>
         </ion-item>
       </ion-card-content>
     </ion-card>
