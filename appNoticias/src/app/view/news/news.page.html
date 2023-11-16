@@ -26,10 +26,10 @@
         <ion-card-subtitle>{{ singleInfo.source.name }}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content text-center>
-        <img [src]="singleInfo.urlToImage"/>
+        <img [src]="getImageUrl(singleInfo)"/>
         <ion-item lines="none">
           <ion-label text-wrap>Descrição</ion-label>
-          <ion-text>{{ singleInfo.description?.slice(0, 200) + '...' }}</ion-text>
+          <ion-text>{{ getDescription(singleInfo).slice(0, 200) + '...' }}</ion-text>
         </ion-item>
         <ion-item>
           <ion-label text-wrap>{{ singleInfo.publishedAt }}</ion-label>
@@ -37,4 +37,3 @@
       </ion-card-content>
     </ion-card>
   </ion-list>
-</ion-content>
