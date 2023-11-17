@@ -1,4 +1,4 @@
-/* news.page.scss */
+
 
 ion-card {
     border: 1px solid #ddd;
@@ -10,10 +10,10 @@ ion-card {
     }
   
     .image-container {
-      border: 1px solid #ddd; /* Adiciona borda à div que envolve a imagem */
-      border-radius: 8px; /* Borda arredondada para combinar com o card */
-      overflow: hidden; /* Garante que a borda seja aplicada corretamente */
-      margin-bottom: 10px; /* Adiciona espaço abaixo da imagem */
+      border: 1px solid #ddd; 
+      border-radius: 8px; 
+      overflow: hidden; 
+      margin-bottom: 10px; 
       
       img {
         width: 100%;
