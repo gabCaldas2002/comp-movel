@@ -1,0 +1,29 @@
+
+
+ion-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+  
+    ion-card-content {
+      padding: 16px;
+    }
+  
+    .image-container {
+      border: 1px solid #ddd; 
+      border-radius: 8px; 
+      overflow: hidden; 
+      margin-bottom: 10px; 
+      
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  
+    ion-item {
+      border-bottom: 1px solid #ddd;
+      padding: 8px 0;
+    }
+  }
+  
