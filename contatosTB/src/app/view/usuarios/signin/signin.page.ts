@@ -30,12 +30,13 @@ export class SigninPage implements OnInit {
     return  this.formLogar.controls;
   }
 
-  submitForm(){
+  submitForm() : boolean{
     if(!this.formLogar.valid){
       this.presentAlert('Erro', 'Erro ao preencher!')
       return false
     }else{
       this.logar()
+      return true;
     }
   }
 
