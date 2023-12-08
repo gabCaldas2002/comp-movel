@@ -9,7 +9,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class AuthService {
   usuarioDados: any;
 
-  constructor(private firebase: FirebaseService, private router: Router, private ngZone: NgZone, private fireAuth: AngularFireAuth) { 
+  constructor(private firebase: FirebaseService, private ngZone: NgZone, private fireAuth: AngularFireAuth) { 
     this.fireAuth.authState.subscribe(user => {
       if(user){
         this.usuarioDados = user;
@@ -37,7 +37,6 @@ export class AuthService {
   public signOut(){
     return this.fireAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['signin']);
     })
   }
 
