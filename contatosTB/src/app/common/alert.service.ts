@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlertService {
 
-  constructor(private alertController: AlertController) { 
+  constructor(private alertController: AlertController, private loadingController: LoadingController) { 
   }
 
   async presentAlert(subHeader : string, message : string) {
@@ -17,6 +17,20 @@ export class AlertService {
       buttons: ['OK'],
     });
     await alert.present();
+  }
+
+  simpleLoader(){
+    this.loadingController.create({
+      message: "carregando..."
+    }).then((response) => {
+      response.present();
+    })
+  }
+
+  dismissLoader(){
+    this.loadingController.dismiss().then((response) => {
+      console.log('fechou', response);
+    })
   }
 
 }
