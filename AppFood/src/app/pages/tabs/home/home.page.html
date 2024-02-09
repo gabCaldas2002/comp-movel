@@ -8,21 +8,14 @@
 </ion-header>
 
 <ion-content>
-  <div>
-    <swiper-container [modules]="swiperModules" [slidesPerView]="1.2" [initialSlide]="0" [centeredSlides]="true" autoplay="true" [spaceBetween]="20" [pagination]="{clickable: true, dynamicBullets: true}">
-      <swiper-slide>
-        <img src="assets/imgs/img1.jpeg"/>
-      </swiper-slide>
-      <swiper-slide>
-        <img src="assets/imgs/img2.jpeg"/>
-      </swiper-slide>
-      <swiper-slide>
-        <img src="assets/imgs/img3.jpeg"/>
-      </swiper-slide>
-    </swiper-container>
+  <app-banner *ngIf="!isLoading" [bannerImages]="banners"></app-banner>
+  <div *ngIf="isLoading">
+    <ion-skeleton-text animated style="height: 25vh;"></ion-skeleton-text>
   </div>
-  
-  <ion-list>
+
+  <app-loading-retaurant *ngIf="isLoading"></app-loading-retaurant>
+
+  <ion-list *ngIf="!isLoading" >
     <ion-list-header class="ion-margin-bottom">
       <ion-label>
         <h4>Restaurantes Próximos</h4>
@@ -30,22 +23,10 @@
       </ion-label>
     </ion-list-header>
 
-    <ion-item lines="none">
-      <ion-thumbnail>
-        <img src="assets/imgs/img1.jpeg" alt="">
-      </ion-thumbnail>
-      
-      <ion-label>
-        <h4>Dom Henrique</h4>
-        <ion-text color="medium">
-          <p class="pStyle">Hamburguer, Café</p>
-          <span><ion-icon name="star"></ion-icon>5.</span>
-          25 mins. R$ 100,00 para 2
-          <ion-text>
-            <p class="distance">1.2 km</p>
-          </ion-text>
-        </ion-text>
-      </ion-label>
-    </ion-item>
+    <!--item restaurante-->
+    <ion-item-group *ngIf="restaurants?.length">
+      <app-restaurant *ngFor="let restaurant of restaurants" [restaurant]="restaurant"></app-restaurant>
+    </ion-item-group>
+    
   </ion-list>
 </ion-content>
