@@ -32,7 +32,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'itens',
+    path: 'restaurants/:restaurantId',
     loadChildren: () => import('./itens/itens.module').then( m => m.ItensPageModule)
   },
 ];
