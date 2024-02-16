@@ -23,6 +23,7 @@ export class SearchPage implements OnInit {
   ngOnInit() {
     this.allRestaurants = [
       {
+        uid:'dh1',
         cover: 'assets/imgs/img1.jpeg',
         name: 'Dom Henrique 1',
         short_name: 'domhenrique1',
@@ -37,6 +38,7 @@ export class SearchPage implements OnInit {
         price: 100
       },
       {
+        uid:'dh2',
         cover: 'assets/imgs/img2.jpeg',
         name: 'Dom Henrique 2',
         short_name: 'domhenrique2',
@@ -51,6 +53,7 @@ export class SearchPage implements OnInit {
         price: 100
       },
       {
+        uid:'dh3',
         cover: 'assets/imgs/img3.jpeg',
         name: 'Dom Henrique 3',
         short_name: 'domhenrique3',
