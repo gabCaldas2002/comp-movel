@@ -14,8 +14,8 @@
     <ion-item lines="full">
       <ion-button slot="end" fill="clear">Editar</ion-button>
       <ion-label>
-        <h4>Gabriel Caldas</h4>
-        <p>42999210149 | gabriel.caldas20112002&#64;gmail.com</p>
+        <h4>Nome</h4>
+        <p>(42)XXXX-XXXX | asd&#64;gmail.com</p>
       </ion-label>
     </ion-item>
     <ion-item lines="none" detail="true">
@@ -26,7 +26,7 @@
 
   <ion-list>
     <ion-list-header>
-      <ion-label color="primary">Últimos Pedidos</ion-label>
+      <ion-label color="primary">Últimos pedidos</ion-label>
     </ion-list-header>
     <ion-item-group>
       <ion-item>
@@ -34,9 +34,7 @@
           <h4>Dom Henrique</h4>
           <p>Guarapuava, Paraná</p>
           <ion-text>
-            <p>R$ 60,00
-              <ion-icon name="chevron-forward-outline"></ion-icon>
-            </p>
+            <p>R$: 60.00 <ion-icon name="chevron-forward-outline"></ion-icon></p>
           </ion-text>
         </ion-label>
         <ion-note slot="end" color="dark">
@@ -44,21 +42,25 @@
           <ion-icon name="checkmark-circle-outline" color="success"></ion-icon>
         </ion-note>
       </ion-item>
-      <ion-label>
-        <ion-text color="dark">
-          <p>Pizza x2</p>
-          <p>Burguer x2</p>
-        </ion-text>
-        <p style="margin-top: 2%;">Janeiro 29, 2024 - 17:30</p>
-        <ion-row>
-          <ion-col size="6">
-            <ion-button fill="outline" expand="block">Pedir Novamente</ion-button>
-          </ion-col>
-          <ion-col size="6">
-            <ion-button fill="outline" expand="block" color="dark">Abrir Reclamação</ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-label>
+      <ion-item>
+        <ion-label>
+          <ion-text color="dark">
+            <p>Pizza</p>
+            <p>Burguer</p>
+          </ion-text>
+          <p style="margin-top: 2%;">
+          Janeiro 29, 2024 - 17:30
+          </p>
+          <ion-row>
+            <ion-col size="6">
+              <ion-button fill="outline" expand="block">Pedir Novamente</ion-button>
+            </ion-col>
+            <ion-col size="6">
+              <ion-button fill="outline" expand="block" color="dark">Abrir Reclamação</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-label>
+      </ion-item>
     </ion-item-group>
   </ion-list>
 </ion-content>
