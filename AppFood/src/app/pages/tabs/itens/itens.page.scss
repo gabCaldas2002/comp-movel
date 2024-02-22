@@ -52,3 +52,17 @@ ion-text{
         margin-top: 0.2rem;
     }
 }
+
+ion-footer{
+    h4{
+        margin-left: 3%;
+    }
+    p{
+        margin-left: 3%;
+        font-size: 0.7rem !important;
+        letter-spacing: 0.5px;
+    }
+    ion-button{
+        color: white;
+    }
+}
