@@ -142,7 +142,7 @@ export class ItensPage implements OnInit {
       this.storeData = JSON.parse(cart.value);
       if(this.id == this.storeData.restaurant.uid && this.allItems.length > 0){
         this.allItems.forEach((element: any) => {
-          this.storeData.item.forEach(ele => {
+          this.storeData.itens.forEach(ele => {
             if(element.id != ele.id) return;
               element.quantity = ele.quantity;
           });
@@ -197,21 +197,24 @@ export class ItensPage implements OnInit {
 
   async saveToCart(){
     try{
-      this.cartData.restaurant = {}
+      this.cartData.restaurant = {};
       this.cartData.restaurant = this.data;
-      await Preferences.set({
-        key: 'cart',
-        value: JSON.stringify(this.cartData)
-      })
-    }catch(e){
-      console.log(e);
+      await Preferences.set(
+        {
+          key: 'cartData',
+          value: JSON.stringify(this.cartData)
+        }
+        );
+    }
+    catch(error){
+      console.log(error);
     }
   }
 
   async viewCart(){
     if(this.cartData.itens && this.cartData.itens.length > 0){
       await this.saveToCart();
-      this.router.navigate([this.router.url + '/cart']);
+      //this.router.navigate([this.router.url + '/cart']);
     }
   }
 
