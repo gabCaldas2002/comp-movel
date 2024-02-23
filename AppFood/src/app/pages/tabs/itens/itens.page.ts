@@ -67,6 +67,7 @@ export class ItensPage implements OnInit {
       uid:'dh1',
       cover: 'assets/imgs/img1.jpeg',
       name: 'Dom Henrique 1',
+      adress: 'Guarapuava, PR',
       short_name: 'domhenrique1',
       cuisines:[
         'Almoço',
@@ -193,6 +194,7 @@ export class ItensPage implements OnInit {
       this.cartData.totalPrice = 0;
       this.cartData.totalItem = 0;
     }
+    this.saveToCart();
   }
 
   async saveToCart(){
@@ -201,7 +203,7 @@ export class ItensPage implements OnInit {
       this.cartData.restaurant = this.data;
       await Preferences.set(
         {
-          key: 'cartData',
+          key: 'cart',
           value: JSON.stringify(this.cartData)
         }
         );
@@ -213,9 +215,9 @@ export class ItensPage implements OnInit {
 
   async viewCart(){
     if(this.cartData.itens && this.cartData.itens.length > 0){
-      await this.saveToCart();
-      //this.router.navigate([this.router.url + '/cart']);
+      await this.saveToCart();  
     }
+    this.router.navigate([this.router.url + '/cart']);
   }
 
   getCart(){
