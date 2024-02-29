@@ -1,21 +1,21 @@
 <ion-list>
   <ion-item>
     <ion-label>
-      <h4>{{ order?.restaurant }}</h4>
+      <h4>{{ pedido?.restaurant }}</h4>
       <ion-text color="medium">
-        <ng-container *ngFor="let item of order?.items">
+        <ng-container *ngFor="let item of pedido?.items">
           <div style="display: flex; align-items: center;">
             <p class="pStyle" style="margin-right: 10px;">{{ item.name }}</p>
-            <p class="pStyle">R$:{{ item?.price}}</p>
+            <p class="pStyle">R$:{{ item.price}}</p>
           </div>
         </ng-container>
       </ion-text>
       <ion-text color="dark">
-        <p style="margin-top: 5%;">{{ order?.delivery_address }}</p>
-        <p style="margin-top: 5%;">Entrega em: {{ order?.delivery_date | date:'dd/MM/yyyy HH:mm' }}</p>
+        <p style="margin-top: 5%;">{{ pedido?.delivery_address }}</p>
+        <p style="margin-top: 5%;">Entrega em: {{ pedido?.delivery_date | date:'dd/MM/yyyy HH:mm' }}</p>
       </ion-text>
       <ion-text color="primary">
-        <p style="margin-top: 2%;">{{ order?.total_price | currency:'BRL' }}</p>
+        <p style="margin-top: 2%;">{{ pedido?.total_price | currency:'BRL' }}</p>
       </ion-text>
     </ion-label>
   </ion-item>

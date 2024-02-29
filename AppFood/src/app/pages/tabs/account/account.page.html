@@ -25,42 +25,13 @@
   </ion-list>
 
   <ion-list>
-    <ion-list-header>
-      <ion-label color="primary">Últimos pedidos</ion-label>
-    </ion-list-header>
-    <ion-item-group>
-      <ion-item>
-        <ion-label>
-          <h4>Dom Henrique</h4>
-          <p>Guarapuava, Paraná</p>
-          <ion-text>
-            <p>R$: 60.00 <ion-icon name="chevron-forward-outline"></ion-icon></p>
-          </ion-text>
-        </ion-label>
-        <ion-note slot="end" color="dark">
-          Entregue
-          <ion-icon name="checkmark-circle-outline" color="success"></ion-icon>
-        </ion-note>
-      </ion-item>
-      <ion-item>
-        <ion-label>
-          <ion-text color="dark">
-            <p>Pizza</p>
-            <p>Burguer</p>
-          </ion-text>
-          <p style="margin-top: 2%;">
-          Janeiro 29, 2024 - 17:30
-          </p>
-          <ion-row>
-            <ion-col size="6">
-              <ion-button fill="outline" expand="block">Pedir Novamente</ion-button>
-            </ion-col>
-            <ion-col size="6">
-              <ion-button fill="outline" expand="block" color="dark">Abrir Reclamação</ion-button>
-            </ion-col>
-          </ion-row>
-        </ion-label>
-      </ion-item>
-    </ion-item-group>
+    <app-loading-pedidos *ngIf="isLoading"></app-loading-pedidos>
+    <app-empty-pedidos *ngIf="!isLoading && pedidos.length == 0" [model]="model"></app-empty-pedidos>
+    <div *ngIf="pedidos.length > 0 " style="text-align: center;">
+      <h4 style="display: inline-block;">
+        Histórico de Pedidos 
+      </h4> 
+      <app-pedidos *ngFor="let pedido of pedidos" [pedido]="pedido"></app-pedidos>
+    </div>
   </ion-list>
 </ion-content>
